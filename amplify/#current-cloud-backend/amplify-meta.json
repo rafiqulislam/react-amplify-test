@@ -1,15 +1,38 @@
 {
-    "providers": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-reactredux-local-182019-authRole",
-            "UnauthRoleArn": "arn:aws:iam::916567785489:role/amplify-reactredux-local-182019-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::916567785489:role/amplify-reactredux-local-182019-authRole",
-            "Region": "ap-south-1",
-            "DeploymentBucketName": "amplify-reactredux-local-182019-deployment",
-            "UnauthRoleName": "amplify-reactredux-local-182019-unauthRole",
-            "StackName": "amplify-reactredux-local-182019",
-            "StackId": "arn:aws:cloudformation:ap-south-1:916567785489:stack/amplify-reactredux-local-182019/d64581d0-aa4b-11ea-8f92-0aa78e4848ba",
-            "AmplifyAppId": "d3rn4p2tzz99aw"
-        }
-    }
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-reactredux-local-182019-authRole",
+			"UnauthRoleArn": "arn:aws:iam::916567785489:role/amplify-reactredux-local-182019-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::916567785489:role/amplify-reactredux-local-182019-authRole",
+			"Region": "ap-south-1",
+			"DeploymentBucketName": "amplify-reactredux-local-182019-deployment",
+			"UnauthRoleName": "amplify-reactredux-local-182019-unauthRole",
+			"StackName": "amplify-reactredux-local-182019",
+			"StackId": "arn:aws:cloudformation:ap-south-1:916567785489:stack/amplify-reactredux-local-182019/d64581d0-aa4b-11ea-8f92-0aa78e4848ba",
+			"AmplifyAppId": "d3rn4p2tzz99aw"
+		}
+	},
+	"auth": {
+		"reactredux99226d08": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false,
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-reactredux-local-182019-deployment/amplify-cfn-templates/auth/reactredux99226d08-cloudformation-template.yml",
+				"logicalId": "authreactredux99226d08"
+			},
+			"lastPushTimeStamp": "2020-06-09T16:58:13.779Z",
+			"output": {
+				"AppClientSecret": "h93aduru6mdb4s7t9565o2c8364bplp4t6vg0v46m9quhr9vum9",
+				"UserPoolId": "ap-south-1_6cDIfDfoc",
+				"AppClientIDWeb": "1p305v2dndvlll4m2jp9aq5721",
+				"AppClientID": "4h4is7qr9phd83g4b1aulqn2eh",
+				"IdentityPoolId": "ap-south-1:a08097ef-8f2b-47ee-81ef-e27ed36296b3",
+				"IdentityPoolName": "reactredux99226d08_identitypool_99226d08__local",
+				"UserPoolName": "reactredux99226d08_userpool_99226d08"
+			},
+			"lastPushDirHash": "oJmMqSknGZ/3dhPjm7NCrkFwK2w="
+		}
+	}
 }

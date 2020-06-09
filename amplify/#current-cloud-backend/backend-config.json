@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"reactredux99226d08": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
