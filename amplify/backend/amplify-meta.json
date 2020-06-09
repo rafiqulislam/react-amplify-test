@@ -1,0 +1,23 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-reactredux-local-182019-authRole",
+            "UnauthRoleArn": "arn:aws:iam::916567785489:role/amplify-reactredux-local-182019-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::916567785489:role/amplify-reactredux-local-182019-authRole",
+            "Region": "ap-south-1",
+            "DeploymentBucketName": "amplify-reactredux-local-182019-deployment",
+            "UnauthRoleName": "amplify-reactredux-local-182019-unauthRole",
+            "StackName": "amplify-reactredux-local-182019",
+            "StackId": "arn:aws:cloudformation:ap-south-1:916567785489:stack/amplify-reactredux-local-182019/d64581d0-aa4b-11ea-8f92-0aa78e4848ba",
+            "AmplifyAppId": "d3rn4p2tzz99aw"
+        }
+    },
+    "auth": {
+        "reactredux99226d08": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [],
+            "customAuth": false
+        }
+    }
+}
