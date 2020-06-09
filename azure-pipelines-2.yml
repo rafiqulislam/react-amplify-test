@@ -21,3 +21,11 @@ steps:
     amplify pull --appId d3rn4p2tzz99aw --envName local
     npm run build
   displayName: 'npm install and build'
+- script: sudo apt-get install -y awscli
+  displayName: Install AWS CLI
+- script: aws s3 sync ./build s3://pashes3.s3.ap-south-1.amazonaws.com
+  displayName: Deploy website
+  env: 
+  AWS_ACCESS_KEY_ID: AKIA5KZ5SQAIZPMWCR4N
+  AWS_SECRET_ACCESS_KEY: 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
+
