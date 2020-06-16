@@ -5,25 +5,53 @@
 
 trigger:
 - master
+- develop
 
-pool:
-  vmImage: 'ubuntu-latest'
+pr:
+  branches:
+    include:
+    - '*' 
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-- script: |
-    npm install
-    npm install -g @aws-amplify/cli
-    amplify pull --appId d3rn4p2tzz99aw --envName local
-    npm run build
-  displayName: 'npm install and build'
-- task: S3Upload@1
-  inputs:
-    awsCredentials: 'aws-s3-connection'
-    regionName: 'ap-south-1'
-    bucketName: 'pashes3'
-    sourceFolder: './build'
-    globExpressions: '**'
+stages:
+- stage: build
+  jobs:
+  - job: run_build
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: echo Build
+	- task: NodeTool@0
+	  inputs:
+		versionSpec: '10.x'
+	  displayName: 'Install Node.js'
+	- script: |
+		npm install
+		npm install -g @aws-amplify/cli
+		amplify pull --appId d3rn4p2tzz99aw --envName local
+		npm run build
+	  displayName: 'npm install,amplify/cli and build'
+	
+- stage: test
+  dependsOn: build
+  jobs:
+  - job: run_tests
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: echo Testing... nothing to test..
+    
+- stage: staging
+  dependsOn: test
+  jobs:
+  - job: deploy_staging
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: echo Staging
+	- task: S3Upload@1
+	  inputs:
+		awsCredentials: 'aws-s3-connection'
+		regionName: 'ap-south-1'
+		bucketName: 'pashes3'
+		sourceFolder: './build'
+		globExpressions: '**'
