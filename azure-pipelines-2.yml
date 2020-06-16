@@ -48,7 +48,7 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
     - script: echo Staging
-	- task: S3Upload@1
+    - task: S3Upload@1
       inputs:
         awsCredentials: 'aws-s3-connection'
         regionName: 'ap-south-1'
