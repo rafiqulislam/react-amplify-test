@@ -18,7 +18,7 @@ stages:
   - job: run_build
     pool:
       vmImage: 'ubuntu-latest'
-    steps:
+    steps:    
     - script: echo Build
     - task: NodeTool@0
       inputs:
@@ -38,6 +38,7 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+    - checkout: none
     - script: echo Testing... nothing to test..
     
 - stage: staging
@@ -47,6 +48,7 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+    - checkout: none
     - script: echo Staging
     - task: S3Upload@1
       inputs:
