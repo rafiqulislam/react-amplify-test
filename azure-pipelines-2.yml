@@ -51,6 +51,7 @@ stages:
   - job: deploy_staging
     pool:
       vmImage: 'ubuntu-latest'
+    environment: Dev  
     steps:
     - checkout: none
     - script: echo Staging
