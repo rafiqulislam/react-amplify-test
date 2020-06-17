@@ -52,20 +52,23 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     environment: 'Dev'      
-    steps:
-    - checkout: none
-    - script: echo Staging
-    - task: DownloadPipelineArtifact@2
-      inputs:
-        artifact: build
-        path: $(Build.SourcesDirectory)/build        
-    - script: pwd  
-    - script: ls -la  
-    
-    - task: S3Upload@1
-      inputs:
-        awsCredentials: 'aws-s3-connection'
-        regionName: 'ap-south-1'
-        bucketName: 'pashes3'
-        sourceFolder: $(Build.SourcesDirectory)/build
-        globExpressions: '**'
+    strategy:
+      runOnce: 
+        deploy:          
+          steps:
+          - checkout: none
+          - script: echo Staging
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              artifact: build
+              path: $(Build.SourcesDirectory)/build        
+          - script: pwd  
+          - script: ls -la  
+
+          - task: S3Upload@1
+            inputs:
+              awsCredentials: 'aws-s3-connection'
+              regionName: 'ap-south-1'
+              bucketName: 'pashes3'
+              sourceFolder: $(Build.SourcesDirectory)/build
+              globExpressions: '**'
