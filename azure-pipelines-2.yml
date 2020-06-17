@@ -57,6 +57,8 @@ stages:
     - task: DownloadPipelineArtifact@2
       inputs:
         artifact: build
+        path: $(Build.SourcesDirectory)/build        
+    - script: pwd  
     - script: ls -la  
     
     - task: S3Upload@1
@@ -64,5 +66,5 @@ stages:
         awsCredentials: 'aws-s3-connection'
         regionName: 'ap-south-1'
         bucketName: 'pashes3'
-        sourceFolder: './build'
+        sourceFolder: $(Build.SourcesDirectory)/build
         globExpressions: '**'
