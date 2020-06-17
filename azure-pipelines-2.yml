@@ -13,7 +13,7 @@ pr:
     - '*' 
 
 stages:
-- stage: build
+- stage: Build
   jobs:
   - job: run_build
     pool:
@@ -35,8 +35,8 @@ stages:
         targetPath: ./build
         artifactName: build
       
-- stage: test
-  dependsOn: build
+- stage: Test
+  dependsOn: Build
   jobs:
   - job: run_tests
     pool:
@@ -45,8 +45,8 @@ stages:
     - checkout: none
     - script: echo Testing... nothing to test..
     
-- stage: staging
-  dependsOn: test
+- stage: Staging
+  dependsOn: Test
   jobs:
   - job: deploy_staging
     pool:
@@ -57,9 +57,7 @@ stages:
     - task: DownloadPipelineArtifact@2
       inputs:
         artifact: build
-        patterns: '**/*.js'
-        path: ./
-    
+          
     - task: S3Upload@1
       inputs:
         awsCredentials: 'aws-s3-connection'
